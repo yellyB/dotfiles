@@ -105,6 +105,8 @@ if command -v nvim &> /dev/null; then
   alias vi="nvim"
 fi
 
+export EDITOR='nvim'
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/Downloads/flutter/bin:$PATH
