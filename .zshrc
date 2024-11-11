@@ -105,6 +105,11 @@ if command -v nvim &> /dev/null; then
   alias vi="nvim"
 fi
 
+# zoxide(z jump, alternative to fasd)
+if command -v zoxide  &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 export EDITOR='nvim'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
