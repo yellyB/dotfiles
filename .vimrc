@@ -21,7 +21,7 @@ call plug#end()
 
 set hlsearch
 set number
-
+set clipboard+=unnamed    " Yanking goes on the clipboard instead.
 
 
 nnoremap <leader>e :NERDTreeToggle<CR>
