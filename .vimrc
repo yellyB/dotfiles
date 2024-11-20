@@ -25,6 +25,7 @@ set clipboard+=unnamed    " Yanking goes on the clipboard instead.
 
 
 nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <C-P> :GFiles<CR>
 
 
 
