@@ -12,6 +12,8 @@ Plug 'hrsh7th/cmp-path'            " 파일 경로 완성
 Plug 'hrsh7th/cmp-vsnip'           " Snippet 지원
 Plug 'hrsh7th/vim-vsnip'           " Snippet 엔진
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -19,9 +21,6 @@ call plug#end()
 
 set hlsearch
 set number
-autocmd VimEnter * if empty(glob('~/.vim/plugged')) | PlugInstall | endif
-
-
 
 
 
