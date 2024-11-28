@@ -28,6 +28,12 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <C-P> :GFiles<CR>
 
 
+nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
+nnoremap <s-l> gt
+
+nnoremap [b <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
+nnoremap ]b <cmd>bn<cr>
+
 
 
 lua << EOF
