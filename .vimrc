@@ -16,6 +16,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'github/copilot.vim'          " copilot for vim
+Plug 'sainnhe/sonokai'             " sonokai theme
+
 
 call plug#end()
 
@@ -73,6 +75,12 @@ lspconfig.tsserver.setup {
 EOF
 
 
+" sonokai 테마 설정
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+colorscheme sonokai
 
 
 
