@@ -15,6 +15,8 @@ Plug 'hrsh7th/vim-vsnip'           " Snippet 엔진
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'github/copilot.vim'          " copilot for vim
+
 call plug#end()
 
 
