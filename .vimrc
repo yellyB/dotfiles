@@ -27,6 +27,13 @@ set hlsearch
 set number
 set clipboard+=unnamed    " Yanking goes on the clipboard instead.
 
+" Tab settings
+set smarttab              " Smarter tab levels
+set tabstop=2             " Set the default tabstop
+set expandtab             " Make tabs into spaces (set by tabstop)
+set shiftwidth=2          " Set the default shift width for indents
+set softtabstop=2
+
 
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <C-P> :GFiles<CR>
