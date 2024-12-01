@@ -3,7 +3,6 @@ call plug#begin()
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
 Plug 'hrsh7th/nvim-cmp'            " 자동완성 플러그인
 Plug 'hrsh7th/cmp-nvim-lsp'        " LSP 소스 연결
