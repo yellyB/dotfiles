@@ -1,9 +1,12 @@
 call plug#begin()
 
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'preservim/nerdtree'
+
+Plug 'preservim/nerdtree'          " 디렉토리 탐색 플러그인
+
 Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
+Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
+
 Plug 'hrsh7th/nvim-cmp'            " 자동완성 플러그인
 Plug 'hrsh7th/cmp-nvim-lsp'        " LSP 소스 연결
 Plug 'hrsh7th/cmp-buffer'          " 버퍼 소스
@@ -15,6 +18,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'github/copilot.vim'          " copilot for vim
+
 Plug 'sainnhe/sonokai'             " sonokai theme
 
 
@@ -32,6 +36,31 @@ set tabstop=2             " Set the default tabstop
 set expandtab             " Make tabs into spaces (set by tabstop)
 set shiftwidth=2          " Set the default shift width for indents
 set softtabstop=2
+
+" Tabline 설정
+set showtabline=2           " 항상 탭라인을 표시
+set tabpagemax=10           " 최대 탭 페이지 수
+
+" 현재 파일 이름 표시
+set tabline=%!MyTabLine()
+
+function! MyTabLine()
+    let s = ''
+    for i in range(tabpagenr('$'))
+        " 현재 탭 강조 표시
+        let tabnr = i + 1
+        let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+
+        " 탭 번호와 파일 이름
+        let s .= ' %{tabnr} '
+        let buflist = tabpagebuflist(tabnr)
+        let winnr = tabpagewinnr(tabnr)
+        let bufname = bufname(buflist[winnr - 1])
+        let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'
+        let s .= ' '
+    endfor
+    return s
+endfunction
 
 
 nnoremap <leader>e :NERDTreeToggle<CR>
