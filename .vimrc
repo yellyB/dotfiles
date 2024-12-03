@@ -16,7 +16,8 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   
   Plug 'github/copilot.vim'          " copilot for vim
-  
+  Plug 'f-person/git-blame.nvim'    " git blame 플러그인
+
   " Plug 'sainnhe/sonokai'             " sonokai theme
   " Plug 'tomasiser/vim-code-dark'     " code dark theme
   Plug 'Mofiqul/vscode.nvim'     " vscode theme
@@ -35,6 +36,9 @@ let g:NERDTreeGitStatus = 1  " NERDTree에서 git 상태 표시
 let NERDTreeShowHidden=1  " 숨김 파일 표시
 "autocmd VimEnter * NERDTree  " vim 실행시 NERDTree 자동 열기
 
+" git blame 설정
+let g:gitblame_message_template = '<summary> • <date> • <author>'   " git blame 메시지 템플릿
+let g:gitblame_date_format = '%r'  " git blame 날짜 형식
 
 
 set hlsearch
