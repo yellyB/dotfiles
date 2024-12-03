@@ -21,7 +21,17 @@ call plug#begin()
   Plug 'tomasiser/vim-code-dark'     " code dark theme
   " Plug 'Mofiqul/vscode.nvim'     " vscode theme
   
+  Plug 'Xuyuanp/nerdtree-git-plugin'   " Git 상태를 표시하는 플러그인
+  Plug 'ryanoasis/vim-devicons'    " 아이콘을 표시하는 플러그인
+  
 call plug#end()
+
+
+
+let g:NERDTreeShowIcons = 1  " NERDTree 아이콘 활성화
+let g:NERDTreeGitStatus = 1  " NERDTree에서 git 상태 표시
+let NERDTreeShowHidden=1  " 숨김 파일 표시
+"autocmd VimEnter * NERDTree  " vim 실행시 NERDTree 자동 열기
 
 
 
