@@ -18,11 +18,13 @@ call plug#begin()
   Plug 'github/copilot.vim'          " copilot for vim
   
   " Plug 'sainnhe/sonokai'             " sonokai theme
-  Plug 'tomasiser/vim-code-dark'     " code dark theme
-  " Plug 'Mofiqul/vscode.nvim'     " vscode theme
+  " Plug 'tomasiser/vim-code-dark'     " code dark theme
+  Plug 'Mofiqul/vscode.nvim'     " vscode theme
   
   Plug 'Xuyuanp/nerdtree-git-plugin'   " Git 상태를 표시하는 플러그인
   Plug 'ryanoasis/vim-devicons'    " 아이콘을 표시하는 플러그인
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   
 call plug#end()
 
@@ -55,7 +57,7 @@ set tabline=%!MyTabLine()
 
 set t_Co=256
 set t_ut=
-colorscheme codedark
+colorscheme vscode
 " " sonokai 테마 설정
 " " Important!!
 " if has('termguicolors')
@@ -113,8 +115,21 @@ lspconfig.ts_ls.setup {
 }
 EOF
 
+" Treesitter 설정"
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,              -- 구문 강조 활성화
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true               -- 코드 자동 들여쓰기 활성화
+  },
+}
+EOF
 
-" 탭 라인 설정
+
+" 탭 라인 설정"
 function! MyTabLine()
     let s = ''
     for i in range(tabpagenr('$'))
@@ -127,7 +142,7 @@ function! MyTabLine()
         let buflist = tabpagebuflist(tabnr)
         let winnr = tabpagewinnr(tabnr)
         let bufname = bufname(buflist[winnr - 1])
-        let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'
+        let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'  " 파일 이름만 표시:t / 경로 표시: p
         let s .= ' '
     endfor
     return s
