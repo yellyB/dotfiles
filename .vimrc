@@ -104,7 +104,7 @@ lspconfig.ts_ls.setup {
 EOF
 
 
-
+" 탭 라인 설정
 function! MyTabLine()
     let s = ''
     for i in range(tabpagenr('$'))
@@ -123,4 +123,6 @@ function! MyTabLine()
     return s
 endfunction
 
-
+" 테마에 맞는 하이라이트 그룹 설정
+highlight TabLineSel guifg=#ffffff guibg=#007acc gui=bold
+highlight TabLine guifg=#bbbbbb guibg=#333333
