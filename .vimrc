@@ -52,7 +52,7 @@ function! MyTabLine()
         let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
 
         " 탭 번호와 파일 이름
-        let s .= ' %{tabnr} '
+        let s .= ' ' . tabnr . ' '
         let buflist = tabpagebuflist(tabnr)
         let winnr = tabpagewinnr(tabnr)
         let bufname = bufname(buflist[winnr - 1])
