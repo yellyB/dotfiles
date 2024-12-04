@@ -147,7 +147,10 @@ function! MyTabLine()
         let buflist = tabpagebuflist(tabnr)
         let winnr = tabpagewinnr(tabnr)
         let bufname = bufname(buflist[winnr - 1])
-        let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'  " 파일 이름만 표시:t / 경로 표시: p
+
+        " 파일 이름에 저장되지 않은 변경이 있는 경우 * 표시
+        let modified = getbufvar(buflist[winnr - 1], "&mod") ? '[*]' : ''
+        let s .= bufname != '' ? fnamemodify(bufname, ':t') . modified : '[No Name]'  " 파일 이름만 표시:t / 경로 표시: p
         let s .= ' '
     endfor
     return s
