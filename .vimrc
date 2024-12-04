@@ -3,29 +3,29 @@ call plug#begin()
   Plug 'preservim/nerdtree'          " 디렉토리 탐색 플러그인
   
   Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
-  Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
-  
+  Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인 
   Plug 'hrsh7th/nvim-cmp'            " 자동완성 플러그인
   Plug 'hrsh7th/cmp-nvim-lsp'        " LSP 소스 연결
   Plug 'hrsh7th/cmp-buffer'          " 버퍼 소스
   Plug 'hrsh7th/cmp-path'            " 파일 경로 완성
   Plug 'hrsh7th/cmp-vsnip'           " Snippet 지원
   Plug 'hrsh7th/vim-vsnip'           " Snippet 엔진
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'numToStr/Comment.nvim'       " 주석 플러그인
   
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  
+
   Plug 'github/copilot.vim'          " copilot for vim
   Plug 'f-person/git-blame.nvim'    " git blame 플러그인
+
+  Plug 'Xuyuanp/nerdtree-git-plugin'   " Git 상태를 표시하는 플러그인
+  Plug 'ryanoasis/vim-devicons'    " 아이콘을 표시하는 플러그인
 
   " Plug 'sainnhe/sonokai'             " sonokai theme
   " Plug 'tomasiser/vim-code-dark'     " code dark theme
   Plug 'Mofiqul/vscode.nvim'     " vscode theme
-  
-  Plug 'Xuyuanp/nerdtree-git-plugin'   " Git 상태를 표시하는 플러그인
-  Plug 'ryanoasis/vim-devicons'    " 아이콘을 표시하는 플러그인
-
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   
 call plug#end()
 
