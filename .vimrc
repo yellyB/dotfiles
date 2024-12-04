@@ -74,7 +74,7 @@ colorscheme vscode
 
 
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <C-P> :GFiles<CR>
+nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 
 
 nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
@@ -156,3 +156,10 @@ endfunction
 " 테마에 맞는 하이라이트 그룹 설정
 highlight TabLineSel guifg=#ffffff guibg=#007acc gui=bold
 highlight TabLine guifg=#bbbbbb guibg=#333333
+
+command! -bang -complete=dir -nargs=* SearchedFileOpenInNewTab
+  \ call fzf#run(
+    \ fzf#vim#with_preview({
+      \ 'sink': 'tabedit'
+    \ }), <bang>0)
+
