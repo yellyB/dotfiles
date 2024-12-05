@@ -23,6 +23,9 @@ call plug#begin()
 
   Plug 'Xuyuanp/nerdtree-git-plugin'   " Git 상태를 표시하는 플러그인
   Plug 'ryanoasis/vim-devicons'    " 아이콘을 표시하는 플러그인
+  Plug 'mawkler/modicator.nvim'   " 모드를 표시하는 플러그인
+  Plug 'nvim-lualine/lualine.nvim' " 상태 표시줄 플러그인
+  Plug 'nvim-tree/nvim-web-devicons' " 아이콘 표시 플러그인
 
   " Plug 'sainnhe/sonokai'             " sonokai theme
   " Plug 'tomasiser/vim-code-dark'     " code dark theme
@@ -184,6 +187,14 @@ lua <<EOF
     pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
   }
 
+  -- 모드 표시 플러그인 설정
+  require('modicator').setup()
+  vim.o.termguicolors = true
+  vim.o.cursorline = true
+  vim.o.number = true
+
+  -- 상태 표시줄 플러그인 설정
+  require('lualine').setup()
 EOF
 
 
