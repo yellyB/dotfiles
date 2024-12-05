@@ -84,6 +84,11 @@ nnoremap [b <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 :
 nnoremap ]b <cmd>bn<cr>
 
 
+" 대소문자 구분 o
+nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color ' . expand('<cword>'))<CR>
+nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --ignore-case ' . expand('<cword>'))<CR>
+xnoremap <silent> <Leader>f "hy:call fzf#vim#grep('ag --nogroup --column --color "' . escape(@h, '/') . '"')<CR>
+xnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --ignore-case ' . escape(@", '/'))<CR>
 
 
 lua << EOF
