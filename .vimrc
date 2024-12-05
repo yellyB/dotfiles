@@ -171,3 +171,11 @@ command! -bang -complete=dir -nargs=* SearchedFileOpenInNewTab
       \ 'sink': 'tabedit'
     \ }), <bang>0)
 
+
+" copilot enabled status for specific filetypes
+let g:copilot_filetypes = {
+  \ 'markdown': v:true,
+  \ 'yaml': v:true,
+  \ 'gitcommit': v:true,
+  \ }
+
