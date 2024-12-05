@@ -13,6 +13,7 @@ call plug#begin()
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'numToStr/Comment.nvim'       " 주석 플러그인
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'       " 주석 플러그인
   
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -91,75 +92,29 @@ xnoremap <silent> <Leader>f "hy:call fzf#vim#grep('ag --nogroup --column --color
 xnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --ignore-case ' . escape(@", '/'))<CR>
 
 
-lua << EOF
-local lspconfig = require('lspconfig')
-local cmp = require('cmp')
-
--- nvim-cmp 설정
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)  -- Snippet 확장
-    end,
-  },
-  mapping = {
-    ['<C-n>'] = cmp.mapping.select_next_item(),  -- 다음 항목
-    ['<C-p>'] = cmp.mapping.select_prev_item(),  -- 이전 항목
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- 선택 확인
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },  -- LSP 소스
-    { name = 'vsnip' },     -- Snippet 소스
-  }, {
-    { name = 'buffer' },    -- 버퍼 소스
-    { name = 'path' },      -- 파일 경로 소스
-  })
-})
-
--- LSP와 nvim-cmp 연결
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- TypeScript 설정
-lspconfig.ts_ls.setup {
-  capabilities = capabilities,
-}
-EOF
-
-" Treesitter 설정"
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,              -- 구문 강조 활성화
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-    enable = true               -- 코드 자동 들여쓰기 활성화
-  },
-}
-EOF
-
 
 " 탭 라인 설정"
 function! MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-        " 현재 탭 강조 표시
-        let tabnr = i + 1
-        let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " 현재 탭 강조 표시
+    let tabnr = i + 1
+    let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
 
-        " 탭 번호와 파일 이름
-        let s .= ' ' . tabnr . ' '
-        let buflist = tabpagebuflist(tabnr)
-        let winnr = tabpagewinnr(tabnr)
-        let bufname = bufname(buflist[winnr - 1])
+    " 탭 번호와 파일 이름
+    let s .= ' ' . tabnr . ' '
+    let buflist = tabpagebuflist(tabnr)
+    let winnr = tabpagewinnr(tabnr)
+    let bufname = bufname(buflist[winnr - 1])
 
-        " 파일 이름에 저장되지 않은 변경이 있는 경우 * 표시
-        let modified = getbufvar(buflist[winnr - 1], "&mod") ? '[*]' : ''
-        let s .= bufname != '' ? fnamemodify(bufname, ':t') . modified : '[No Name]'  " 파일 이름만 표시:t / 경로 표시: p
-        let s .= ' '
-    endfor
-    return s
+    " 파일 이름에 저장되지 않은 변경이 있는 경우 * 표시
+    let modified = getbufvar(buflist[winnr - 1], "&mod") ? '[*]' : ''
+    let s .= bufname != '' ? fnamemodify(bufname, ':t') . modified : '[No Name]'  " 파일 이름만 표시:t / 경로 표시: p
+    let s .= ' '
+  endfor
+  return s
 endfunction
+
 
 " 테마에 맞는 하이라이트 그룹 설정
 highlight TabLineSel guifg=#ffffff guibg=#007acc gui=bold
@@ -178,4 +133,57 @@ let g:copilot_filetypes = {
   \ 'yaml': v:true,
   \ 'gitcommit': v:true,
   \ }
+
+
+lua <<EOF
+  local lspconfig = require('lspconfig')
+  local cmp = require('cmp')
+  
+  -- nvim-cmp 설정
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)  -- Snippet 확장
+      end,
+    },
+    mapping = {
+      ['<C-n>'] = cmp.mapping.select_next_item(),  -- 다음 항목
+      ['<C-p>'] = cmp.mapping.select_prev_item(),  -- 이전 항목
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- 선택 확인
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },  -- LSP 소스
+      { name = 'vsnip' },     -- Snippet 소스
+    }, {
+      { name = 'buffer' },    -- 버퍼 소스
+      { name = 'path' },      -- 파일 경로 소스
+    })
+  })
+  
+  -- LSP와 nvim-cmp 연결
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  
+  -- TypeScript 설정
+  lspconfig.ts_ls.setup {
+    capabilities = capabilities,
+  }
+
+ -- Treesitter 설정
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,              -- 구문 강조 활성화
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true               -- 코드 자동 들여쓰기 활성화
+    },
+  }
+
+  -- 주석 플러그인 통합
+  require('Comment').setup {
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+  }
+
+EOF
+
 
