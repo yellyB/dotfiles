@@ -40,6 +40,7 @@ let NERDTreeShowHidden=1      " 숨김 파일 표시
 let g:gitblame_message_template = '<summary> • <date> • <author>'   " git blame 메시지 템플릿
 let g:gitblame_date_format = '%r'                                   " git blame 날짜 형식
 let g:gitblame_highlight_group = "Question"
+let g:NERDTreeWinSize = 40
 
 
 set hlsearch
@@ -111,6 +112,17 @@ function! MyTabLine()
   endfor
   return s
 endfunction
+
+
+" Point current file in NERDTree
+function! s:NERDTreeFindOrClose()
+  if &filetype ==# 'nerdtree'
+    :NERDTreeClose
+  else
+    :NERDTreeFind
+  endif
+endfunction
+nnoremap <leader>e :call <SID>NERDTreeFindOrClose()<CR>
 
 
 " fzf 설정: 파일 검색 후 새 탭에서 열기
