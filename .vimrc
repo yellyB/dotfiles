@@ -5,7 +5,6 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
 
   Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
-  Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인 
   Plug 'hrsh7th/nvim-cmp'            " 자동완성 플러그인
   Plug 'hrsh7th/cmp-nvim-lsp'        " LSP 소스 연결
   Plug 'hrsh7th/cmp-buffer'          " 버퍼 소스
@@ -16,7 +15,6 @@ call plug#begin()
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'numToStr/Comment.nvim'       " 주석 플러그인
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'       " 주석 플러그인: tsx 용
-  
 
   Plug 'github/copilot.vim'          " copilot for vim
   Plug 'f-person/git-blame.nvim'     " git blame 플러그인
@@ -74,8 +72,8 @@ nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
 nnoremap <s-l> gt
 
-nnoremap [b <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
-nnoremap ]b <cmd>bn<cr>
+nnoremap b[ <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
+nnoremap b] <cmd>bn<cr>
 
 
 " 대소문자 구분/구분없이 검색하는 fzf 키 매핑
@@ -161,6 +159,9 @@ lua <<EOF
   
   -- TypeScript 설정
   lspconfig.ts_ls.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.gdscript.setup {
     capabilities = capabilities,
   }
 
