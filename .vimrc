@@ -76,6 +76,11 @@ nnoremap <s-l> gt
 nnoremap b[ <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
 nnoremap b] <cmd>bn<cr>
 
+nnoremap <C-h> <C-w>h   " : 창 전환. 왼쪽
+nnoremap <C-j> <C-w>j   " : 창 전환. 아래
+nnoremap <C-k> <C-w>k   " : 창 전환. 위
+nnoremap <C-l> <C-w>l   " : 창 전환. 오른쪽
+
 
 " 대소문자 구분/구분없이 검색하는 fzf 키 매핑
 nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color ' . expand('<cword>'))<CR>
