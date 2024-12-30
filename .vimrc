@@ -127,7 +127,8 @@ function! s:NERDTreeFindOrClose()
     :NERDTreeFind
   endif
 endfunction
-nnoremap <leader>e :call <SID>NERDTreeFindOrClose()<CR>
+nnoremap <leader>f :call <SID>NERDTreeFindOrClose()<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 
 
 " fzf 설정: 파일 검색 후 새 탭에서 열기
