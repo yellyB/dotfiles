@@ -90,6 +90,10 @@ xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color
 " Ctrl+Shift+F를 눌렀을 때 전체 검색
 nnoremap <silent> <Leader><C-F> :Ag<CR>
 
+nnoremap <leader>f :call <SID>NERDTreeFindOrClose()<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+xnoremap <leader>/ y/<C-r>0<CR>  " Visual 모드에서 선택한 텍스트 바로 검색(\+/)
+
 
 " 하이라이트 그룹 설정
 highlight TabLineSel guifg=#ffffff guibg=#007acc gui=bold
@@ -127,8 +131,6 @@ function! s:NERDTreeFindOrClose()
     :NERDTreeFind
   endif
 endfunction
-nnoremap <leader>f :call <SID>NERDTreeFindOrClose()<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
 
 
 " fzf 설정: 파일 검색 후 새 탭에서 열기
