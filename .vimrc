@@ -194,6 +194,13 @@ lua <<EOF
     indent = {
       enable = true               -- 코드 자동 들여쓰기 활성화
     },
+    ensure_installed = {
+				"vimdoc",
+				"luadoc",
+				"vim",
+				"lua",
+				"markdown"
+		}
   }
 
   -- 주석 플러그인 통합
