@@ -42,6 +42,8 @@ let g:gitblame_date_format = '%r'                                   " git blame 
 let g:gitblame_highlight_group = "Question"
 let g:NERDTreeWinSize = 40
 
+let g:fzf_buffers_jump = 1  " fzf 버퍼 목록에서 이동
+
 
 set hlsearch
 set number
@@ -87,6 +89,7 @@ nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color ' 
 nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --ignore-case ' . expand('<cword>'))<CR>
 xnoremap <silent> <Leader>f "ty:call fzf#vim#grep('ag --nogroup --column --color "' . escape(@t, '/') . '"')<CR>
 xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color --ignore-case "' . escape(@t, '/') . '"')<CR>
+nnoremap <leader>bb :Buffers<CR>
 " Ctrl+Shift+F를 눌렀을 때 전체 검색
 nnoremap <silent> <Leader><C-F> :Ag<CR>
 
