@@ -13,8 +13,11 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'           " Snippet 엔진
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'numToStr/Comment.nvim'       " 주석 플러그인
-  Plug 'JoosepAlviste/nvim-ts-context-commentstring'       " 주석 플러그인: tsx 용
+  Plug 'numToStr/Comment.nvim'                                " 주석 플러그인
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'          " 주석 플러그인: tsx 용
+  Plug 'nvim-lua/plenary.nvim'                                " 플러그인 의존성
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }    " 코드 액션 UI
+  Plug 'nvim-telescope/telescope-ui-select.nvim'              " 코드 액션 UI
 
   Plug 'github/copilot.vim'          " copilot for vim
   Plug 'f-person/git-blame.nvim'     " git blame 플러그인
@@ -71,7 +74,6 @@ colorscheme vscode
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 
-
 nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
 nnoremap <s-l> gt
 
@@ -82,7 +84,6 @@ nnoremap <C-h> <C-w>h   " : 창 전환. 왼쪽
 nnoremap <C-j> <C-w>j   " : 창 전환. 아래
 nnoremap <C-k> <C-w>k   " : 창 전환. 위
 nnoremap <C-l> <C-w>l   " : 창 전환. 오른쪽
-
 
 " 대소문자 구분/구분없이 검색하는 fzf 키 매핑
 nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color ' . expand('<cword>'))<CR>
@@ -96,6 +97,8 @@ nnoremap <silent> <Leader><C-F> :Ag<CR>
 nnoremap <leader>f :call <SID>NERDTreeFindOrClose()<CR>
 nnoremap <leader>e :NERDTreeToggle<CR>
 xnoremap <leader>/ y/<C-r>0<CR>  " Visual 모드에서 선택한 텍스트 바로 검색(\+/)
+
+nnoremap <leader>qf :lua vim.lsp.buf.code_action()<CR>  " Quick Fix 단축키
 
 
 " 하이라이트 그룹 설정
@@ -164,8 +167,8 @@ lua <<EOF
       end,
     },
     mapping = {
-      ['<C-n>'] = cmp.mapping.select_next_item(),  -- 다음 항목
-      ['<C-p>'] = cmp.mapping.select_prev_item(),  -- 이전 항목
+      ['<Tab>'] = cmp.mapping.select_next_item(),
+      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- 선택 확인
     },
     sources = cmp.config.sources({
@@ -219,6 +222,16 @@ lua <<EOF
 
   -- 상태 표시줄 플러그인 설정
   require('lualine').setup()
+
+  require("telescope").setup {
+    extensions = {
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown {
+        }
+      }
+    }
+  }
+  require("telescope").load_extension("ui-select")
 EOF
 
 
