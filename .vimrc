@@ -154,84 +154,25 @@ let g:copilot_filetypes = {
   \ 'gitcommit': v:true,
   \ }
 
-
 lua <<EOF
-  local lspconfig = require('lspconfig')
-  local cmp = require('cmp')
-  
-  -- nvim-cmp 설정
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)  -- Snippet 확장
-      end,
-    },
-    mapping = {
-      ['<Tab>'] = cmp.mapping.select_next_item(),
-      ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- 선택 확인
-    },
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },  -- LSP 소스
-      { name = 'vsnip' },     -- Snippet 소스
-    }, {
-      { name = 'buffer' },    -- 버퍼 소스
-      { name = 'path' },      -- 파일 경로 소스
-    })
-  })
-  
-  -- LSP와 nvim-cmp 연결
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  
-  -- TypeScript 설정
-  lspconfig.ts_ls.setup {
-    capabilities = capabilities,
-  }
-  lspconfig.gdscript.setup {
-    capabilities = capabilities,
-  }
+  local function load_plugins()
+    -- plugin-config 폴더의 경로 설정
+    local plugin_dir = vim.fn.expand(vim.fn.stdpath('config') .. '/plugin-config')
+    local handle = vim.loop.fs_scandir(plugin_dir)
 
- -- Treesitter 설정
-  require'nvim-treesitter.configs'.setup {
-    highlight = {
-      enable = true,              -- 구문 강조 활성화
-      additional_vim_regex_highlighting = false,
-    },
-    indent = {
-      enable = true               -- 코드 자동 들여쓰기 활성화
-    },
-    ensure_installed = {
-				"vimdoc",
-				"luadoc",
-				"vim",
-				"lua",
-				"markdown"
-		}
-  }
+    while handle do
+      local name, t = vim.loop.fs_scandir_next(handle)
+      if not name then break end
 
-  -- 주석 플러그인 통합
-  require('Comment').setup {
-    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-  }
+      if t == 'file' and name:match("%.lua$") then
+        local plugin_name = name:gsub("%.lua$", "")
+        local success, err = pcall(require, 'plugin-config.' .. plugin_name)
+        if not success then
+          print("Error loading plugin-config." .. plugin_name .. ": " .. err)
+        end
+      end
+    end
+  end
 
-  -- 모드 표시 플러그인 설정
-  require('modicator').setup()
-  vim.o.termguicolors = true
-  vim.o.cursorline = true
-  vim.o.number = true
-
-  -- 상태 표시줄 플러그인 설정
-  require('lualine').setup()
-
-  require("telescope").setup {
-    extensions = {
-      ["ui-select"] = {
-        require("telescope.themes").get_dropdown {
-        }
-      }
-    }
-  }
-  require("telescope").load_extension("ui-select")
+  load_plugins()
 EOF
-
-
