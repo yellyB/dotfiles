@@ -154,25 +154,4 @@ let g:copilot_filetypes = {
   \ 'gitcommit': v:true,
   \ }
 
-lua <<EOF
-  local function load_plugins()
-    -- plugin-config 폴더의 경로 설정
-    local plugin_dir = vim.fn.expand(vim.fn.stdpath('config') .. '/plugin-config')
-    local handle = vim.loop.fs_scandir(plugin_dir)
-
-    while handle do
-      local name, t = vim.loop.fs_scandir_next(handle)
-      if not name then break end
-
-      if t == 'file' and name:match("%.lua$") then
-        local plugin_name = name:gsub("%.lua$", "")
-        local success, err = pcall(require, 'plugin-config.' .. plugin_name)
-        if not success then
-          print("Error loading plugin-config." .. plugin_name .. ": " .. err)
-        end
-      end
-    end
-  end
-
-  load_plugins()
-EOF
+runtime! plugin-config/*.lua

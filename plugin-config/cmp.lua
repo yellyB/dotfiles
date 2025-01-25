@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-print("cmp.lua 파일이 실행되었습니다!")
+
 cmp.setup({
   snippet = {
     expand = function(args)
