@@ -34,6 +34,9 @@ call plug#begin()
 call plug#end()
 
 
+runtime! plugin-config/*.lua plugin-config/*.vim
+
+
 set hlsearch
 set number
 set clipboard+=unnamed    " Yanking goes on the clipboard instead.
@@ -101,4 +104,3 @@ let g:copilot_filetypes = {
   \ 'gitcommit': v:true,
   \ }
 
-runtime! plugin-config/*.lua plugin-config/*.vim
