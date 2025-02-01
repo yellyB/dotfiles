@@ -23,12 +23,13 @@ call plug#begin()
   Plug 'f-person/git-blame.nvim'     " git blame 플러그인
 
   " UI 플러그인
-  Plug 'Xuyuanp/nerdtree-git-plugin'    " Git 상태를 표시하는 플러그인
-  Plug 'ryanoasis/vim-devicons'         " 아이콘을 표시하는 플러그인
-  Plug 'mawkler/modicator.nvim'         " 모드를 표시하는 플러그인
-  Plug 'nvim-lualine/lualine.nvim'      " 상태 표시줄 플러그인
-  Plug 'nvim-tree/nvim-web-devicons'    " 아이콘 표시 플러그인
-  Plug 'Mofiqul/vscode.nvim'            " vscode theme
+  Plug 'Xuyuanp/nerdtree-git-plugin'          " Git 상태를 표시하는 플러그인
+  Plug 'ryanoasis/vim-devicons'               " 아이콘을 표시하는 플러그인
+  Plug 'mawkler/modicator.nvim'               " 모드를 표시하는 플러그인
+  Plug 'nvim-lualine/lualine.nvim'            " 상태 표시줄 플러그인
+  Plug 'nvim-tree/nvim-web-devicons'          " 아이콘 표시 플러그인
+  Plug 'lukas-reineke/indent-blankline.nvim'  " 들여쓰기 표시 플러그인
+  Plug 'Mofiqul/vscode.nvim'                  " vscode theme
   
 call plug#end()
 
