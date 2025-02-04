@@ -4,9 +4,6 @@ let NERDTreeShowHidden=1      " 숨김 파일 표시
 "autocmd VimEnter * NERDTree  " vim 실행시 NERDTree 자동 열기
 let g:NERDTreeWinSize = 40
 
-nnoremap <leader>E :NERDTreeToggle<CR>
-nnoremap <leader>e :call <SID>NERDTreeFindOrClose()<CR>
-
 " Point current file in NERDTree
 function! s:NERDTreeFindOrClose()
   if &filetype ==# 'nerdtree'
