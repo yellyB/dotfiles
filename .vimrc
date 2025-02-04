@@ -1,37 +1,45 @@
 call plug#begin()
 
-  Plug 'preservim/nerdtree'          " 디렉토리 탐색 플러그인
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+" 디렉토리 탐색
+Plug 'preservim/nerdtree'                                     " 디렉토리 탐색
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-  Plug 'neovim/nvim-lspconfig'       " LSP 클라이언트 설정 플러그인
-  Plug 'hrsh7th/nvim-cmp'            " 자동완성 플러그인
-  Plug 'hrsh7th/cmp-nvim-lsp'        " LSP 소스 연결
-  Plug 'hrsh7th/cmp-buffer'          " 버퍼 소스
-  Plug 'hrsh7th/cmp-path'            " 파일 경로 완성
-  Plug 'hrsh7th/cmp-vsnip'           " Snippet 지원
-  Plug 'hrsh7th/vim-vsnip'           " Snippet 엔진
+" LSP 관련
+Plug 'neovim/nvim-lspconfig'                                  " LSP 클라이언트 설정 
+Plug 'hrsh7th/nvim-cmp'                                       " 자동완성 플러그인
+Plug 'hrsh7th/cmp-nvim-lsp'                                   " LSP 소스 연결
+Plug 'hrsh7th/cmp-buffer'                                     " 버퍼 소스
+Plug 'hrsh7th/cmp-path'                                       " 파일 경로 완성
+Plug 'hrsh7th/cmp-vsnip'                                      " Snippet 지원
+Plug 'hrsh7th/vim-vsnip'                                      " Snippet 엔진
 
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'numToStr/Comment.nvim'                                " 주석 플러그인
-  Plug 'JoosepAlviste/nvim-ts-context-commentstring'          " 주석 플러그인: tsx 용
-  Plug 'nvim-lua/plenary.nvim'                                " 플러그인 의존성
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }    " 코드 액션 UI
-  Plug 'nvim-telescope/telescope-ui-select.nvim'              " 코드 액션 UI
+" 코드 분석
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " 문법 강조 
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }      " 코드 액션 UI
+Plug 'nvim-telescope/telescope-ui-select.nvim'                " 코드 액션 UI
+Plug 'nvim-lua/plenary.nvim'                                  " 플러그인 의존성  
 
-  Plug 'github/copilot.vim'          " copilot for vim
-  Plug 'f-person/git-blame.nvim'     " git blame 플러그인
+" 코드 편집
+Plug 'numToStr/Comment.nvim'                                  " 주석 플러그인
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'            " 주석 플러그인: tsx 용
+Plug 'f-person/git-blame.nvim'                                " git 작성 정보
 
-  " UI 플러그인
-  Plug 'Xuyuanp/nerdtree-git-plugin'          " Git 상태를 표시하는 플러그인
-  Plug 'ryanoasis/vim-devicons'               " 아이콘을 표시하는 플러그인
-  Plug 'mawkler/modicator.nvim'               " 모드를 표시하는 플러그인
-  Plug 'nvim-lualine/lualine.nvim'            " 상태 표시줄 플러그인
-  Plug 'nvim-tree/nvim-web-devicons'          " 아이콘 표시 플러그인
-  Plug 'lukas-reineke/indent-blankline.nvim'  " 들여쓰기 표시 플러그인
-  Plug 'Mofiqul/vscode.nvim'                  " vscode theme
-  
+" UI 
+Plug 'Xuyuanp/nerdtree-git-plugin'                            " Git 상태를 표시
+Plug 'ryanoasis/vim-devicons'                                 " 아이콘을 표시
+Plug 'mawkler/modicator.nvim'                                 " 모드를 표시
+Plug 'nvim-lualine/lualine.nvim'                              " 상태 표시줄 
+Plug 'nvim-tree/nvim-web-devicons'                            " 아이콘 표시
+Plug 'lukas-reineke/indent-blankline.nvim'                    " 들여쓰기 표시
+Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
+
+" 서드 파티 
+Plug 'github/copilot.vim'                                     " copilot for vim
+
 call plug#end()
+
+
 
 
 runtime! plugin-config/*.vim
@@ -59,6 +67,8 @@ set t_Co=256
 set t_ut=
 
 
+
+
 nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
 nnoremap <s-l> gt
 
@@ -79,7 +89,7 @@ nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --
 xnoremap <silent> <Leader>f "ty:call fzf#vim#grep('ag --nogroup --column --color "' . escape(@t, '/') . '"')<CR>
 xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color --ignore-case "' . escape(@t, '/') . '"')<CR>
 
-nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>b :Buffers<CR>
 
 nnoremap b[ <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
 nnoremap b] <cmd>bn<cr>
@@ -92,8 +102,8 @@ nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 nnoremap ff :lua vim.lsp.buf.code_action()<CR>  " Quick Fix 단축키
 
 " --- NERDTree ---  
-nnoremap <leader>E :NERDTreeToggle<CR>
-nnoremap <leader>e :call <SID>NERDTreeFindOrClose()<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>r :call <SID>NERDTreeFindOrClose()<CR>
 
 
 
@@ -102,7 +112,6 @@ highlight TabLineSel guifg=#ffffff guibg=#007acc gui=bold
 highlight TabLine guifg=#bbbbbb guibg=#4d4d4d
 
 
-" 탭 라인 설정"
 function! MyTabLine()
   let s = ''
   for i in range(tabpagenr('$'))
@@ -123,6 +132,16 @@ function! MyTabLine()
   endfor
   return s
 endfunction
+
+
+function! s:NERDTreeFindOrClose()
+  if &filetype ==# 'nerdtree'
+    :NERDTreeClose
+  else
+    :NERDTreeFind
+  endif
+endfunction
+
 
 " copilot enabled status for specific filetypes
 let g:copilot_filetypes = {
