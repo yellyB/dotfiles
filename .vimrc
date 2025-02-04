@@ -34,7 +34,7 @@ call plug#begin()
 call plug#end()
 
 
-runtime! plugin-config/*.lua plugin-config/*.vim
+runtime! plugin-config/*.vim
 
 
 set hlsearch

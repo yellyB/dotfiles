@@ -1,3 +1,4 @@
+lua <<EOF
 local cmp = require('cmp')
 
 cmp.setup({
@@ -19,3 +20,4 @@ cmp.setup({
     { name = 'path' },      -- 파일 경로 소스
   })
 })
+EOF

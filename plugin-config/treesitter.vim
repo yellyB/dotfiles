@@ -1,3 +1,4 @@
+lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,              -- 구문 강조 활성화
@@ -14,3 +15,4 @@ require'nvim-treesitter.configs'.setup {
       "markdown"
   }
 }
+EOF
