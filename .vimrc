@@ -89,14 +89,15 @@ nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --
 xnoremap <silent> <Leader>f "ty:call fzf#vim#grep('ag --nogroup --column --color "' . escape(@t, '/') . '"')<CR>
 xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color --ignore-case "' . escape(@t, '/') . '"')<CR>
 
-nnoremap <leader>b :Buffers<CR>
+" Ctrl+Shift+F 로 전체 검색
+nnoremap <silent> <C-F> :Ag<CR>
 
+nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
+
+nnoremap <leader>b :Buffers<CR>
 nnoremap b[ <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
 nnoremap b] <cmd>bn<cr>
 
-" Ctrl+Shift+F 로 전체 검색
-nnoremap <silent> <C-S-F> :Ag<CR>
-nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 
 " --- lsp ---
 nnoremap ff :lua vim.lsp.buf.code_action()<CR>  " Quick Fix 단축키
