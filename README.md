@@ -6,6 +6,7 @@
 
 ln -s dotfiles/.zshrc .
 ln -s dotfiles/.vimrc .
+ln -s dotfiles/init.vim ~/.config/nvim
 ln -s dotfiles/plugin-config ~/.config/nvim
 ln -s dotfiles/.tmux.conf .
 ln -s dotfiles/.tmux.conf.local .
