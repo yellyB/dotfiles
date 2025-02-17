@@ -94,13 +94,14 @@ nnoremap <silent> <C-F> :Ag<CR>
 
 nnoremap <C-P> :SearchedFileOpenInNewTab<CR>
 
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
 nnoremap b[ <cmd>bp<cr> 	" : 버퍼 목록 탐색. <cmd>는 : 
 nnoremap b] <cmd>bn<cr>
+nnoremap <silent> <leader>bd :bp \| bd #<CR>  " 현재 창을 버퍼 목록에서 삭제 + 이전 버퍼로 이동
 
 
 " --- lsp ---
-nnoremap ff :lua vim.lsp.buf.code_action()<CR>  " Quick Fix 단축키
+nnoremap qf :lua vim.lsp.buf.code_action()<CR>  " Quick Fix 단축키
 
 " --- NERDTree ---  
 nnoremap <leader>t :NERDTreeToggle<CR>
@@ -150,4 +151,3 @@ let g:copilot_filetypes = {
   \ 'yaml': v:true,
   \ 'gitcommit': v:true,
   \ }
-
