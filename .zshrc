@@ -133,3 +133,5 @@ if command -v pyenv &> /dev/null; then
   eval "$(pyenv virtualenv-init -)"
   alias ac="source activate"
 fi
+
+export FZF_DEFAULT_OPTS='--preview "bat --color=always {}"'
