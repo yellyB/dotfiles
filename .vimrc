@@ -38,6 +38,11 @@ Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
 Plug 'github/copilot.vim'                                     " copilot for vim
 Plug 'tpope/vim-fugitive'
 
+" 언어 지원
+Plug 'leafgarland/typescript-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'evanleck/vim-svelte'
+
 call plug#end()
 
 
