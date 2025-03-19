@@ -12,7 +12,15 @@ require'nvim-treesitter.configs'.setup {
       "luadoc",
       "vim",
       "lua",
-      "markdown"
+      "markdown",
+      "svelte",
+      "gdscript",
+      "css",
+      "html",
+      "typescript",
+      "javascript",
+      "tsx",
+      "jsx"
   }
 }
 EOF

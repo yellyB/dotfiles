@@ -16,7 +16,7 @@ Plug 'hrsh7th/vim-vsnip'                                      " Snippet 엔진
 
 " 코드 분석
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " 문법 강조 
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }      " 코드 액션 UI
+Plug 'nvim-telescope/telescope.nvim'                          " 코드 액션 UI
 Plug 'nvim-telescope/telescope-ui-select.nvim'                " 코드 액션 UI
 Plug 'nvim-lua/plenary.nvim'                                  " 플러그인 의존성  
 
@@ -38,10 +38,7 @@ Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
 Plug 'github/copilot.vim'                                     " copilot for vim
 Plug 'tpope/vim-fugitive'
 
-" 언어 지원
-Plug 'leafgarland/typescript-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'evanleck/vim-svelte'
+
 
 call plug#end()
 
@@ -157,3 +154,8 @@ let g:copilot_filetypes = {
   \ 'yaml': v:true,
   \ 'gitcommit': v:true,
   \ }
+
+
+
+colorscheme vscode
+
