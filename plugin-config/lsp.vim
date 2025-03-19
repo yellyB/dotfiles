@@ -8,6 +8,9 @@ lua <<EOF
   lspconfig.gdscript.setup {
     capabilities = capabilities,
   }
+  lspconfig.svelte.setup {
+    capabilities = capabilities,
+  }
   -- format on save
   vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
