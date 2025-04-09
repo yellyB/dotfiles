@@ -51,6 +51,7 @@ runtime! plugin-config/*.vim
 set hlsearch
 set number
 set clipboard+=unnamed    " Yanking goes on the clipboard instead.
+set whichwrap+=<,>
 
 " Tab settings
 set smarttab              " Smarter tab levels
@@ -72,8 +73,8 @@ set t_ut=
 
 
 
-nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
-nnoremap <s-l> gt
+" nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
+" nnoremap <s-l> gt
 
 nnoremap <C-h> <C-w>h   " : 창 전환. 왼쪽
 nnoremap <C-j> <C-w>j   " : 창 전환. 아래
