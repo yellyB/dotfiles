@@ -47,6 +47,8 @@ call plug#end()
 
 runtime! plugin-config/*.vim
 
+colorscheme vscode
+
 
 set hlsearch
 set number
@@ -157,6 +159,4 @@ let g:copilot_filetypes = {
   \ }
 
 
-
-colorscheme vscode
 
