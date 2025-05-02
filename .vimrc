@@ -88,12 +88,12 @@ xnoremap <leader>/ y/<C-r>0<CR>  " Visual 모드에서 선택한 텍스트 바�
 
 " [플러그인 숏컷]
 " --- fzf ---
-" 대소문자 구분 & 구분없이 검색하는 fzf 키 매핑
+" 대소문자 구분 & 구분없이 검색하는 fzf 키 매핑. (ag) (-w: 단어 단위 검색)
 " 1: 현재 커서 위치 단어. 대소문자 구분 / 2: 현재 커서 위치 단어. 대소문자 무시 / 3: 선택한 영역. 대소문자 구분 / 4: 선택한 영역. 대소문자 무시
-nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color ' . expand('<cword>'))<CR>
-nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color --ignore-case ' . expand('<cword>'))<CR>
-xnoremap <silent> <Leader>f "ty:call fzf#vim#grep('ag --nogroup --column --color "' . escape(@t, '/') . '"')<CR>
-xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color --ignore-case "' . escape(@t, '/') . '"')<CR>
+nnoremap <silent> <Leader>f :call fzf#vim#grep('ag --nogroup --column --color -w --case-sensitive ' . expand('<cword>'))<CR>
+nnoremap <silent> <Leader>F :call fzf#vim#grep('ag --nogroup --column --color -w ' . expand('<cword>'))<CR>
+xnoremap <silent> <Leader>f "ty:call fzf#vim#grep('ag --nogroup --column --color -w --case-sensitive "' . escape(@t, '/') . '"')<CR>
+xnoremap <silent> <Leader>F "ty:call fzf#vim#grep('ag --nogroup --column --color -w "' . escape(@t, '/') . '"')<CR>
 
 " Ctrl+Shift+F 로 전체 검색
 nnoremap <silent> <C-F> :Ag<CR>
