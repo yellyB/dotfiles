@@ -13,5 +13,10 @@
     <true/>
     <key>StartInterval</key>
     <integer>30</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/wifi-volume-control.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/wifi-volume-control.err</string>
   </dict>
 </plist>
