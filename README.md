@@ -11,4 +11,12 @@ ln -s dotfiles/plugin-config ~/.config/nvim
 ln -s dotfiles/.tmux.conf .
 ln -s dotfiles/.tmux.conf.local .
 ln -s dotfiles/scripts/wifi-volume-control.sh .
+ln -s dotfiles/scripts/com.user.wifi-volume-control.plist ~/Library/LaunchAgents/com.user.wifi-volume-control.plist
+```
+
+
+### brew 설치
+
+```
+brew install switchaudio-osx
 ```
