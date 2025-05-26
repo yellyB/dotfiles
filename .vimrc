@@ -38,7 +38,7 @@ Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
 Plug 'github/copilot.vim'                                     " copilot for vim
 Plug 'tpope/vim-fugitive'
 
-
+Plug 'tpope/vim-fugitive'                                     " Git 플러그인
 
 call plug#end()
 
