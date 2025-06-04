@@ -15,6 +15,8 @@ if command -v nvim &> /dev/null; then
   export EDITOR='nvim'
 fi
 
+alias mx="tmuxinator"
+
 # ───── 기타 기본 유저 설정 ─────
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
