@@ -17,14 +17,15 @@
 [pretty]
 	one = %C(bold red)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(cyan)<%an>%C(reset)%C(bold yellow)%d%C(reset)
 [alias]
-	st = status
-	df = diff
+  a = add
+  amd = commit --amend
+  bn = branch
+  cm = commit
+  cme = commit --allow-empty        ; 빈 커밋 생성
+  cmm = commit --amend --no-edit    ; g add . + cm + rb~1
   ck = checkout
   cp = cherry-pick
-  rb = rebase
-  cm = commit
-  rs = reset
-	amend = commit --amend
+	df = diff
 	lg = log --graph --abbrev-commit --decorate --date=relative --format=one --all --date-order
 	ls = !git lg \
 	  | fzf -m --ansi --layout=reverse --preview=\"echo {} \
@@ -35,4 +36,13 @@
 	  | egrep -o '[0-9a-f]+'
 	lsb = !git branch \
 	    | fzf --preview 'echo {} | cut -c3- | xargs git show --color=always' --height 90% \
-	    | cut -c3-
+    | cut -c3-
+  p = push
+  po = push origin
+  pof = push origin -f
+  pl = pull
+  rb = rebase
+  rs = reset
+  rt = restore
+	st = status
+
