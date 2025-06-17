@@ -12,6 +12,8 @@ ln -s dotfiles/.tmux.conf .
 ln -s dotfiles/.tmux.conf.local .
 ln -s dotfiles/scripts/wifi-volume-control.sh .
 cp dotfiles/scripts/com.user.wifi-volume-control.plist ~/Library/LaunchAgents/com.user.wifi-volume-control.plist
+ln -s dotfiles/.gitconfig .
+ln -s dotfiles/shell .
 ```
 
 
