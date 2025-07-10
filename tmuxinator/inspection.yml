@@ -1,0 +1,16 @@
+# /Users/oto/.config/tmuxinator/inspection.yml
+
+name: inspection
+root: ~/bun-inspection-web/
+
+
+windows:
+  - server:
+      panes:
+        - nvm use
+  - git:
+      panes:
+        - nvm use
+  - code:
+      panes:
+        - vi 

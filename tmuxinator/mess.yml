@@ -1,0 +1,16 @@
+# /Users/oto/.config/tmuxinator/mess.yml
+
+name: mess
+root: ~/bun-admin-web-message
+
+
+windows:
+  - server:
+      panes:
+        - nvm use
+  - git:
+      panes:
+        - nvm use
+  - code:
+      panes:
+        - vi 

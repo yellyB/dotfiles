@@ -1,0 +1,16 @@
+# /Users/oto/.config/tmuxinator/order-admin.yml
+
+name: order-admin
+root: ~/bun-admin-web-order1/
+
+
+windows:
+  - server:
+      panes:
+        - nvm use
+  - git:
+      panes:
+        - nvm use
+  - code:
+      panes:
+        - vi 

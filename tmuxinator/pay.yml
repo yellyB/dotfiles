@@ -1,0 +1,16 @@
+# /Users/oto/.config/tmuxinator/pay.yml
+
+name: pay
+root: ~/bun-pay-web/
+
+
+windows:
+  - server:
+      panes:
+        - nvm use
+  - git:
+      panes:
+        - nvm use
+  - code:
+      panes:
+        - vi 
