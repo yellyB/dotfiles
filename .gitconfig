@@ -10,7 +10,6 @@
 	name = oto(김보미)
 	email = oto.kim@bunjang.co.kr
 [commit]
-	template = /Users/oto/.stCommitMsg
 	verbose = true
 [credential]
 	helper = osxkeychain
@@ -26,6 +25,7 @@
   ck = checkout
   cp = cherry-pick
 	df = diff
+	gh = !nvim -c 'Flog -all'         ; rbong/vim-flog 플러그인 설치 필요
 	lg = log --graph --abbrev-commit --decorate --date=relative --format=one --all --date-order
 	ls = !git lg \
 	  | fzf -m --ansi --layout=reverse --preview=\"echo {} \
