@@ -25,7 +25,7 @@
   ck = checkout
   cp = cherry-pick
 	df = diff
-	gh = !nvim -c 'Flog -all'         ; rbong/vim-flog 플러그인 설치 필요
+	gh = !nvim -c 'Flog -all  -order=date'        ; rbong/vim-flog 플러그인 설치 필요
 	lg = log --graph --abbrev-commit --decorate --date=relative --format=one --all --date-order
 	ls = !git lg \
 	  | fzf -m --ansi --layout=reverse --preview=\"echo {} \
