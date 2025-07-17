@@ -7,10 +7,11 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
-	name = oto(김보미)
+	name = oto(김보미)
 	email = oto.kim@bunjang.co.kr
 [commit]
 	verbose = true
+	template = /Users/oto/.stCommitMsg
 [credential]
 	helper = osxkeychain
 [pretty]
