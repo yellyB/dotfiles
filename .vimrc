@@ -38,6 +38,7 @@ Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
 Plug 'github/copilot.vim'                                     " copilot for vim
 Plug 'tpope/vim-fugitive'                                     " Git 플러그인
 Plug 'rbong/vim-flog'
+Plug 'madox2/vim-ai'
 
 call plug#end()
 
@@ -72,6 +73,8 @@ set t_Co=256
 set t_ut=
 
 
+let g:ai_api_key = 'AIzaSyDtrgEhhiV71dQTL9Z-Gb-uS7OLrXAzePk'
+let g:ai_backend = 'gemini-pro'
 
 
 " nnoremap <s-h> gT 	" : 탭 전환. 오른쪽

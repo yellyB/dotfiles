@@ -3,4 +3,4 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 
-lua require('mygit.ui').setup()
+" lua require('mygit.ui').setup()
