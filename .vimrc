@@ -38,7 +38,6 @@ Plug 'Mofiqul/vscode.nvim'                                    " vscode theme
 Plug 'github/copilot.vim'                                     " copilot for vim
 Plug 'tpope/vim-fugitive'                                     " Git 플러그인
 Plug 'rbong/vim-flog'
-Plug 'madox2/vim-ai'
 
 call plug#end()
 
@@ -73,10 +72,6 @@ set t_Co=256
 set t_ut=
 
 
-let g:ai_api_key = 'AIzaSyDtrgEhhiV71dQTL9Z-Gb-uS7OLrXAzePk'
-let g:ai_backend = 'gemini-pro'
-
-
 " nnoremap <s-h> gT 	" : 탭 전환. 오른쪽
 " nnoremap <s-l> gt
 
@@ -87,7 +82,51 @@ nnoremap <C-l> <C-w>l   " : 창 전환. 오른쪽
 
 xnoremap <leader>/ y/<C-r>0<CR>  " Visual 모드에서 선택한 텍스트 바로 검색(\+/)
 
+" Gemini API 호출 함수
+function! CallGeminiAPI(prompt)
+    let api_key = $GEMINI_API_KEY
+    let url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' . api_key
+    
+    let data = {
+        \ "contents": [{
+        \   "parts": [{"text": a:prompt}]
+        \ }]
+    \ }
+    
+    let json_data = json_encode(data)
+    let cmd = 'curl -s -X POST "' . url . '" -H "Content-Type: application/json" -d ' . shellescape(json_data)
+    
+    let response = system(cmd)
+    let parsed = json_decode(response)
+    
+    if has_key(parsed, 'candidates') && len(parsed.candidates) > 0
+        return parsed.candidates[0].content.parts[0].text
+    else
+        return "API 호출 실패: " . response
+    endif
+endfunction
 
+" 선택한 텍스트를 Gemini로 보내기
+function! AskGemini() range
+    let selected_text = join(getline(a:firstline, a:lastline), "\n")
+    let prompt = input("질문: ", "다음 코드를 설명해줘:\n" . selected_text)
+    
+    if prompt != ""
+        echo "Gemini에게 질문 중..."
+        let response = CallGeminiAPI(prompt)
+        
+        " 새 버퍼에 결과 표시
+        new
+        put =response
+        setlocal buftype=nofile
+        setlocal bufhidden=wipe
+        setlocal noswapfile
+    endif
+endfunction
+
+" 키 매핑
+vnoremap <leader>ai :call AskGemini()<CR>
+nnoremap <leader>ai :call AskGemini()<CR>
 " [플러그인 숏컷]
 " --- fzf ---
 " 대소문자 구분 & 구분없이 검색하는 fzf 키 매핑. (ag) (-w: 단어 단위 검색)

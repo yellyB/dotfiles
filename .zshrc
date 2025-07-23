@@ -48,7 +48,10 @@ if command -v pyenv &> /dev/null; then
 fi
 
 # 비공개 설정 분리
-source ~/.zshrc_secret
+source ~/.config/zsh/.zshrc_secret
+source ~/.config/api_keys/.gemini_key
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
