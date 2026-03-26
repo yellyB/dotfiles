@@ -1,7 +1,7 @@
-# /Users/oto/.config/tmuxinator/inspection.yml
+# /Users/oto/.config/tmuxinator/mercari-admin.yml
 
-name: inspection
-root: ~/bun-inspection-web/
+name: mer
+root: ~/bun-admin-web-mercari/
 
 
 windows:

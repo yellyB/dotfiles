@@ -13,4 +13,7 @@ windows:
         - nvm use
   - code:
       panes:
-        - vi 
+        - vi
+  - claude:
+      panes:
+        - claude
