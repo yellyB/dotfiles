@@ -23,6 +23,7 @@ if command -v nvim &> /dev/null; then
 fi
 
 alias mx="tmuxinator"
+alias lz="lazygit"
 
 # ───── 기타 기본 유저 설정 ─────
 export NVM_DIR="$HOME/.nvm"
