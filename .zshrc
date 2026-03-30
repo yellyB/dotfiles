@@ -24,6 +24,7 @@ fi
 
 alias mx="tmuxinator"
 alias lz="lazygit"
+alias cl="claude"
 
 # ───── 기타 기본 유저 설정 ─────
 export NVM_DIR="$HOME/.nvm"
