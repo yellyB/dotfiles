@@ -1,7 +1,7 @@
 # /Users/oto/.config/tmuxinator/mercari-admin.yml
 
 name: mer
-root: ~/bun-admin-web-mercari/
+root: ~/Workspace/bun-admin-web-mercari/
 
 
 windows:
