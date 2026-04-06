@@ -1,7 +1,7 @@
 # /Users/oto/.config/tmuxinator/order.yml
 
 name: order
-root: ~/bun-order-web/
+root: ~/Workspace/bun-order-web/
 
 
 windows:

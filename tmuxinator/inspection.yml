@@ -1,7 +1,7 @@
 # /Users/oto/.config/tmuxinator/inspection.yml
 
 name: inspection
-root: ~/bun-inspection-web/
+root: ~/Workspace/bun-inspection-web/
 
 
 windows:

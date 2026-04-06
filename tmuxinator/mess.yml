@@ -1,7 +1,7 @@
 # /Users/oto/.config/tmuxinator/mess.yml
 
 name: mess
-root: ~/bun-admin-web-message
+root: ~/Workspace/bun-admin-web-shop
 
 
 windows:

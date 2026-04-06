@@ -1,7 +1,7 @@
 # /Users/oto/.config/tmuxinator/pay.yml
 
 name: pay
-root: ~/bun-pay-web/
+root: ~/Workspace/bun-pay-web/
 
 
 windows:
