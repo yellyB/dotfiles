@@ -1,0 +1,16 @@
+# /Users/oto/.config/tmuxinator/kill-grass.yml
+
+name: kill-grass
+root: ~/Workspace/game-kill_grass/
+
+
+windows:
+  - git:
+      panes:
+        -
+  - claude:
+      panes:
+        - claude
+  - code:
+      panes:
+        - vi
